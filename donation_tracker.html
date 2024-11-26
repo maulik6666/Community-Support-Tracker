@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Donation Tracker</title>
+        <link rel="stylesheet" href="template.css">
+        <script defer src="donation_tracker.js"></script>
+        <style>
+            /* General Styles */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #FFFFFF;
+                color: #000000;
+                margin: 0;
+                padding: 0;
+            }
+    
+            /* Header Styles */
+            header {
+                background-color: #ADD8E6;
+                color: #000000;
+                padding: 10px 20px;
+                text-align: center;
+            }
+    
+            header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+    
+            /* Navigation Bar Styles */
+            nav {
+                background-color: #D3D3D3;
+                display: flex;
+                justify-content: center;
+                padding: 10px 0;
+            }
+    
+            nav a {
+                text-decoration: none;
+                color: #000000;
+                font-weight: bold;
+                margin: 0 15px;
+                font-size: 16px;
+            }
+    
+            nav a:hover {
+                color: #87CEEB;
+            }
+    
+            /* Main Content Area Styles */
+            main {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 10px 20px;
+            }
+    
+            /* Footer Styles */
+            footer {
+                background-color: #D3D3D3;
+                color: #000000;
+                text-align: center;
+                padding: 10px 20px;
+                position: relative;
+                bottom: 0;
+                width: 100%;
+            }
+    
+            footer p {
+                margin: 0;
+                font-size: 14px;
+            }
+            </style>
+        </head>
+        <body>
+            <header>
+                <h1>Community Support Tracker</h1>
+            </header>
+            
+            <nav>
+                <a href="donation_tracker.html">Donation Tracker</a>
+                <a href="volunteer_hours.html">Volunteer Hours Tracker</a>
+                <a href="event_signup.html">Event Signup</a>
+            </nav>
+            
+            <main>
+                <h2>Donation Tracker</h2>
+                <form id="donation-form">
+                    <label for="charity-name">Charity Name:</label>
+                    <input type="text" id="charity-name" name="charity-name" required>
+
+                    <label for="donation-amount">Donation Amount:</label>
+                    <input type="number" id="donation-amount" name="donation-amount" min="1" required>
+
+                    <label for="donation-date">Date of Donation:</label>
+                    <input type="date" id="donation-date" name="donation-date" required>
+
+                    <label for="donor-message">Donor Comment/Message:</label>
+                    <textarea id="donor-message" name="donor-message"></textarea>
+
+                    <button type="submit">Submit Donation</button>
+                </form>
+            </main>
+            <footer>
+                <p>&copy; 2024 PiXELL River Financial - Community Support Tracker</p>
+            </footer>
+        </body>
+</html>
