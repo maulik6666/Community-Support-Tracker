@@ -1,51 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Signup</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <!-- Navigation Header -->
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Signup</title>
+        <link rel="stylesheet" href="event-styles.css"> <!-- Link to shared form styles -->
+        <script defer src="event_signup.js"></script> <!-- Link to JavaScript -->
+        <style>
+            /* General Styles */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #FFFFFF;
+                color: #000000;
+                margin: 0;
+                padding: 0;
+            }
+    
+            /* Header Styles */
+            header {
+                background-color: #ADD8E6;
+                color: #000000;
+                padding: 10px 20px;
+                text-align: center;
+            }
+    
+            header h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+    
+            /* Navigation Bar Styles */
+            nav {
+                background-color: #D3D3D3;
+                display: flex;
+                justify-content: center;
+                padding: 10px 0;
+            }
+    
+            nav a {
+                text-decoration: none;
+                color: #000000;
+                font-weight: bold;
+                margin: 0 15px;
+                font-size: 16px;
+            }
+    
+            nav a:hover {
+                color: #87CEEB;
+            }
+    
+            /* Main Content Area Styles */
+            main {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 10px 20px;
+            }
+    
+            /* Footer Styles */
+            footer {
+                background-color: #D3D3D3;
+                color: #000000;
+                text-align: center;
+                padding: 10px 20px;
+                position: relative;
+                bottom: 0;
+                width: 100%;
+            }
+    
+            footer p {
+                margin: 0;
+                font-size: 14px;
+            }
+            </style>
+    </head>
+        <body>
+            <!-- Header -->
+            <header>
+            <h1>Community Support Tracker</h1>
+        </header>
 
-    <main>
-        <h1>Event Signup</h1>
-        <form id="event-signup-form">
-            <label for="event-name">Event Name:</label>
-            <input type="text" id="event-name" name="event-name" required>
+    <!-- Navigation -->
+     <nav>
+        <a href="donation_tracker.html">Donation Tracker</a>
+        <a href="volunteer_hours.html">Volunteer Hours Tracker</a>
+        <a href="event_signup.html">Event Signup</a>
+    </nav>
 
-            <label for="representative-name">Representative's Name:</label>
-            <input type="text" id="representative-name" name="representative-name" required>
+    <!-- Main Content -->
+     <main>
+        <h2>Event Signup</h2>
+        <form id="event-signup-form" novalidate>
+        <!-- Event Name -->
+        <label for="event-name">Event Name:</label>
+        <input type="text" id="event-name" name="event-name" required>
 
-            <label for="representative-email">Representative's Email:</label>
-            <input type="email" id="representative-email" name="representative-email" required>
+            <!-- Representative's Name -->
+             <label for="representative-name">Company Representative's Name:</label>
+             <input type="text" id="representative-name" name="representative-name" required>
 
-            <label for="role">Role:</label>
-            <select id="role" name="role" required>
+            <!-- Representative's Email -->
+             <label for="representative-email">Representative's Email:</label>
+             <input type="email" id="representative-email" name="representative-email" required>
+
+            <!-- Role Selection -->
+             <label for="role">Role at Event:</label>
+             <select id="role" name="role" required>
+                <option value="">Select Role</option>
                 <option value="Sponsor">Sponsor</option>
                 <option value="Participant">Participant</option>
                 <option value="Organizer">Organizer</option>
             </select>
 
-            <button type="submit">Sign Up</button>
-        </form>
-    </main>
+            <!-- Submit Button -->
+             <button type="submit">Sign Up</button>
+            </form>
+            </main>
 
-    <footer>
-        <!-- Footer Content -->
-        <p>&copy; 2024 PiXELL River Financial</p>
+    <!-- Footer -->
+     <footer>
+        <p>&copy; 2024 PiXELL River Financial - Community Support Tracker</p>
     </footer>
-
-    <script src="event_signup.js"></script>
-</body>
-</html>
+    </body>
+     </html>
