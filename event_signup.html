@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Signup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <!-- Navigation Header -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Event Signup</h1>
+        <form id="event-signup-form">
+            <label for="event-name">Event Name:</label>
+            <input type="text" id="event-name" name="event-name" required>
+
+            <label for="representative-name">Representative's Name:</label>
+            <input type="text" id="representative-name" name="representative-name" required>
+
+            <label for="representative-email">Representative's Email:</label>
+            <input type="email" id="representative-email" name="representative-email" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="Sponsor">Sponsor</option>
+                <option value="Participant">Participant</option>
+                <option value="Organizer">Organizer</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </main>
+
+    <footer>
+        <!-- Footer Content -->
+        <p>&copy; 2024 PiXELL River Financial</p>
+    </footer>
+
+    <script src="event_signup.js"></script>
+</body>
+</html>
