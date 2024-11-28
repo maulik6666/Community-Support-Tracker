@@ -37,3 +37,25 @@ test("Valid input populates data object", () => {
         role: "Sponsor",
     });
 });
+
+test("Validation flags empty fields", () => {
+    document.getElementById("event-name").value = "";
+    const form = document.getElementById("event-signup-form");
+    const mockEvent = { preventDefault: jest.fn() };
+
+    form.dispatchEvent(new Event("submit"));
+
+    expect(mockEvent.preventDefault).toHaveBeenCalled();
+    expect(alert).toHaveBeenCalledWith("All fields are required. Please fill out all fields.");
+});
+
+test("Validation flags invalid email format", () => {
+    document.getElementById("representative-email").value = "invalid-email";
+    const form = document.getElementById("event-signup-form");
+    const mockEvent = { preventDefault: jest.fn() };
+
+    form.dispatchEvent(new Event("submit"));
+
+    expect(mockEvent.preventDefault).toHaveBeenCalled();
+    expect(alert).toHaveBeenCalledWith("Please enter a valid email address.");
+});
