@@ -6,9 +6,9 @@ function submitForm(event) {
 
     // Get the form field values
     const charityName = document.getElementById("charity-name").value;
-    const hoursVolunteered = parseFloat(document.getElementById("hours-volunteered").value); // Convert to number
+    const hoursVolunteered = parseFloat(document.getElementById("hours-volunteered").value); 
     const date = document.getElementById("date").value;
-    const experienceRating = parseInt(document.getElementById("experience-rating").value, 10); // Convert to number
+    const experienceRating = parseInt(document.getElementById("experience-rating").value, 10); 
 
     // Check for empty required fields
     if (!charityName || !hoursVolunteered || !date || !experienceRating) {
