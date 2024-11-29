@@ -1,138 +1,129 @@
-/* General Reset */
-* {
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Header Section */
+/* Header Styles */
 header {
-  background-color: #2C6E6E; 
-  color: white;
+  background-color: #ADD8E6;
+  color: #000000;
+  padding: 10px 20px;
   text-align: center;
-  width: 100%;
-  height: 15vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-  border-bottom: 2px solid #1F4E5F; 
 }
 
 header h1 {
   margin: 0;
-  font-size: 2.5em;
-  letter-spacing: 1px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
+  font-size: 24px;
 }
 
-/* Navigation Bar */
+h2{
+  text-align: center;
+}
+
+/* Navigation Bar Styles */
 nav {
-  width: 100%;
-  background-color: #A6D1D1; 
+  background-color: #D3D3D3;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 60px;
-  border-bottom: 2px solid #2C6E6E; 
+  justify-content: center;
+  padding: 10px 0;
 }
 
 nav a {
-  color: #2C6E6E; 
   text-decoration: none;
-  font-size: 1.2rem;
+  color: #000000;
   font-weight: bold;
-  transition: color 0.3s ease;
+  margin: 0 15px;
+  font-size: 16px;
 }
 
 nav a:hover {
-  color: #1F4E5F;
+  color: #87CEEB;
 }
-h2{
-  text-align: center;
-  color: #333333;
+
+/* Main Content Area Styles */
+main {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px 20px;
 }
-/* Form Layout */
+
+/* General form styles */
 form {
-  max-width: 500px;
-  width: 90%;
-  margin: 2rem auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  background-color: #FFFFFF; 
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Limits the form width for better readability */
+  margin: 0 auto; /* Centers the form horizontally */
+  padding: 20px; /* Adds spacing inside the form */
+  border: 1px solid #D3D3D3; /* Light gray border for aesthetics */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #FFFFFF; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
 }
 
-form label {
-  font-size: 1rem;
-  font-weight: bold;
-  color: #333333;
+/* Label styles */
+label {
+  display: block; /* Makes each label appear on its own line */
+  margin-bottom: 8px; /* Spacing between the label and the input field */
+  font-weight: bold; /* Emphasizes the labels */
+  font-size: 14px; /* Adjusts label text size */
 }
 
-form input,
-form textarea,
-form button {
-  width: 100%;
-  height: 40px;
-  font-size: 1rem;
-  border: 1px solid #BDC3C7; 
-  border-radius: 4px;
+/* Input styles */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+  width: 100%; /* Makes input fields stretch to the full width of the form */
+  padding: 10px; /* Adds spacing inside the input fields */
+  margin-bottom: 15px; /* Spacing between fields */
+  border: 1px solid #D3D3D3; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Adjusts font size */
+  box-sizing: border-box; /* Includes padding and border in width calculation */
 }
 
-form input, form textarea {
-  background-color: #E4E4E4; 
+/* Button styles */
+button {
+  display: block; /* Ensures the button takes up the full width */
+  width: 100%; /* Full-width button */
+  padding: 10px 20px; /* Adds padding */
+  background-color: #ADD8E6; /* Light blue background */
+  color: #000000; /* Black text color */
+  border: none; /* Removes default border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Adjusts font size */
+  font-weight: bold; /* Emphasizes button text */
+  cursor: pointer; /* Adds a pointer cursor */
 }
-
-form button {
-  background-color: #A6D1D1; 
-  color: #2C6E6E; 
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 4px;
-  height: 45px;
+ 
+/* Button hover effect */
+button:hover {
+  background-color: #87CEEB; /* Darker blue on hover */
 }
-
-form button:hover {
-  background-color: #76C1C1; 
-}
-
-/* Footer */
+ 
+/* Footer Styles */
 footer {
-  height: 70px;
-  width: 100%;
-  background-color: #2C6E6E; 
+  background-color: #D3D3D3;
+  color: #000000;
   text-align: center;
-  font-size: 0.9rem;
-  line-height: 70px;
-  color: white;
-  border-top: 2px solid #1F4E5F; 
+  padding: 10px 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  form {
-    max-width: 90%;
-  }
-
-  header h1 {
-    font-size: 1.8rem;
-  }
+ 
+footer p {
+  margin: 0;
+  font-size: 14px;
 }
-
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 1.5rem;
-  }
-
+/* Form responsiveness for small screens */
+@media (max-width: 600px) {
   form {
-    max-width: 100%; 
+      padding: 15px; /* Reduce padding for smaller screens */
   }
 
-  nav a {
-    font-size: 1rem;
+  button {
+      font-size: 14px; /* Smaller button text on small screens */
   }
 }
