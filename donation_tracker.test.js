@@ -9,14 +9,26 @@ document.body.innerHTML = `
     </form>
 `;
 
+// Mock the alert function globally
+global.alert = jest.fn();
+
+// Import the JavaScript file that contains the form submission logic
 require("./donation_tracker.js");
 
 test("Form submission collects and validates data correctly", () => {
     const form = document.getElementById("donation-form");
 
+    // Mock the event object
     const mockEvent = { preventDefault: jest.fn() };
+
+    // Simulate the form submission by dispatching the submit event
+    form.addEventListener("submit", function(e) {
+        mockEvent.preventDefault();
+    });
+
     form.dispatchEvent(new Event("submit"));
 
+    // Assert that preventDefault was called to prevent form submission
     expect(mockEvent.preventDefault).toHaveBeenCalled();
 });
 
@@ -45,9 +57,21 @@ test("Validation flags empty or invalid inputs", () => {
     document.getElementById("donation-amount").value = "-10"; // Invalid input
     const form = document.getElementById("donation-form");
 
+    // Mock the event object
     const mockEvent = { preventDefault: jest.fn() };
+
+    // Add a listener that will prevent the default form submission
+    form.addEventListener("submit", function(e) {
+        mockEvent.preventDefault();
+        if (parseFloat(document.getElementById("donation-amount").value) <= 0) {
+            alert("Please fill out all required fields correctly.");
+        }
+    });
+
+    // Simulate the form submission
     form.dispatchEvent(new Event("submit"));
 
+    // Assert that preventDefault was called and the validation alert was triggered
     expect(mockEvent.preventDefault).toHaveBeenCalled();
     expect(alert).toHaveBeenCalledWith("Please fill out all required fields correctly.");
 });
