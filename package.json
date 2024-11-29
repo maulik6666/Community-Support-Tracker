@@ -1,0 +1,20 @@
+{
+  "name": "community-support-tracker",
+  "version": "1.0.0",
+  "description": "The **Community Support Tracker** is a project by PiXELL River Financial, developed to monitor and manage community support initiatives. The tool helps track donations, log volunteer hours, and manage event signups, ensuring a meaningful impact in the communities we serve.",
+  "main": "donation_tracker.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^25.0.1"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-jsdom"
+  }
+}
