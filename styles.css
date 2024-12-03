@@ -66,3 +66,7 @@ button:hover {
         font-size: 14px; /* Smaller button text on small screens */
     }
 }
+
+h2 {
+    text-align: center;
+}
