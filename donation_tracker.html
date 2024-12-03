@@ -101,6 +101,27 @@
 
                     <button type="submit">Submit Donation</button>
                 </form>
+                <!-- Donations Table -->
+                <h3>Donations</h3>
+                <table id="donations-table" border="1px">
+                    <thead>
+                        <tr>
+                            <th>Charity Name</th>
+                            <th>Donation Amount</th>
+                            <th>Date</th>
+                            <th>Comment</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Rows will be dynamically added here -->
+                    </tbody>
+                </table>
+
+                <!-- Summary Section -->
+                <div id="summary">
+                    <h4>Total Amount Donated: $<span id="total-donation">0</span></h4>
+                </div>
             </main>
             <footer>
                 <p>&copy; 2024 PiXELL River Financial - Community Support Tracker</p>
