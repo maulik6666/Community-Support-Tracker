@@ -84,3 +84,6 @@ function deleteDonation(index) {
 
 // Initial render on page load
 document.addEventListener("DOMContentLoaded", renderTable);
+
+// Export functions for testing
+module.exports = { renderTable, calculateSummary, deleteDonation, saveDonation };

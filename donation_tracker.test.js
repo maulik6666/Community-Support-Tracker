@@ -1,3 +1,5 @@
+const { renderTable, calculateSummary, deleteDonation, saveDonation } = require("./donation_tracker.js");
+
 // Mock document elements for Jest
 document.body.innerHTML = `
     <form id="donation-form">
@@ -7,6 +9,10 @@ document.body.innerHTML = `
         <textarea id="donor-message">Great cause!</textarea>
         <button type="submit">Submit Donation</button>
     </form>
+    <table id="donations-table">
+        <tbody></tbody>
+    </table>
+    <span id="total-donation">0</span>
 `;
 
 // Mock the alert function globally
@@ -84,7 +90,7 @@ test("Save and retrieve donations from localStorage", () => {
         donorMessage: "Great work!",
     };
 
-    localStorage.setItem("donations", JSON.stringify([mockDonation]));
+    saveDonation(mockDonation);
     const retrievedDonations = JSON.parse(localStorage.getItem("donations"));
 
     expect(retrievedDonations).toEqual([mockDonation]);
@@ -97,7 +103,6 @@ test("Calculate total donation amount", () => {
         { donationAmount: 25 },
     ];
     localStorage.setItem("donations", JSON.stringify(donations));
-    document.body.innerHTML = '<span id="total-donation"></span>';
     calculateSummary();
 
     const total = document.getElementById("total-donation").textContent;
@@ -114,4 +119,20 @@ test("Delete donation updates localStorage and table", () => {
 
     const updatedDonations = JSON.parse(localStorage.getItem("donations"));
     expect(updatedDonations).toEqual([{ charityName: "Charity B", donationAmount: 200 }]);
+});
+
+test("Render table populates DOM correctly", () => {
+    const mockDonation = {
+        charityName: "Charity A",
+        donationAmount: 100,
+        donationDate: "2024-11-24",
+        donorMessage: "Great work!",
+    };
+
+    localStorage.setItem("donations", JSON.stringify([mockDonation]));
+    renderTable();
+
+    const tableBody = document.getElementById("donations-table").querySelector("tbody");
+    expect(tableBody.children.length).toBe(1);
+    expect(tableBody.children[0].textContent).toContain("Charity A");
 });
