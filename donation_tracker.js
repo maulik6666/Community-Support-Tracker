@@ -1,31 +1,36 @@
 // Handle form submission
-document.getElementById("donation-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+function setupEventListeners() {
+    const donationForm = document.getElementById("donation-form");
+    if (donationForm) {
+        donationForm.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-    // Collect form data
-    const charityName = document.getElementById("charity-name").value.trim();
-    const donationAmount = parseFloat(document.getElementById("donation-amount").value);
-    const donationDate = document.getElementById("donation-date").value;
-    const donorMessage = document.getElementById("donor-message").value.trim();
+            // Collect form data
+            const charityName = document.getElementById("charity-name").value.trim();
+            const donationAmount = parseFloat(document.getElementById("donation-amount").value);
+            const donationDate = document.getElementById("donation-date").value;
+            const donorMessage = document.getElementById("donor-message").value.trim();
 
-    // Validate inputs
-    if (!charityName || !donationAmount || !donationDate || donationAmount <= 0 || isNaN(donationAmount)) {
-        alert("Please fill out all required fields correctly.");
-        return;
+            // Validate inputs
+            if (!charityName || isNaN(donationAmount) || donationAmount <= 0 || !donationDate) {
+                alert("Please fill out all required fields correctly.");
+                return;
+            }
+
+            // Temporary data object
+            const donationData = {
+                charityName,
+                donationAmount,
+                donationDate,
+                donorMessage,
+            };
+
+            saveDonation(donationData);
+            renderTable();
+            donationForm.reset();
+        });
     }
-
-    // Temporary data object
-    const donationData = {
-        charityName,
-        donationAmount,
-        donationDate,
-        donorMessage,
-    };
-
-    saveDonation(donationData);
-    renderTable();
-    document.getElementById("donation-form").reset();
-});
+}
 
 // Save donation to localStorage
 function saveDonation(donation) {
@@ -82,8 +87,11 @@ function deleteDonation(index) {
     renderTable();
 }
 
-// Initial render on page load
-document.addEventListener("DOMContentLoaded", renderTable);
+// Initial render and event listener setup on page load
+document.addEventListener("DOMContentLoaded", () => {
+    renderTable();
+    setupEventListeners();
+});
 
 // Export functions for testing
-module.exports = { renderTable, calculateSummary, deleteDonation, saveDonation };
+module.exports = { renderTable, calculateSummary, deleteDonation, saveDonation, setupEventListeners };
