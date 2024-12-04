@@ -9,13 +9,87 @@ document.body.innerHTML = `
     </select>
     <button type="submit">Sign Up</button>
 </form>
+<table id="signups-table">
+<tbody></tbody>
+</table>
+<div id="summary-section"></div>
 `;
 
 // Mocking the alert function
 global.alert = jest.fn();
 
+// Import the event_signup.js functions
 require("./event_signup.js");
 
+// Clear localStorage before each test
+beforeEach(() => {
+    localStorage.clear();
+});
+
+// Test for saving and retrieving signups from localStorage
+test("Save and retrieve signups from localStorage", () => {
+    const mockSignup = {
+        eventName: "Fund Raises",
+        participantName: "Rushil Patel",
+        participantEmail: "Rushilpatel@gmail.com",
+        role: "Sponsor",
+    };
+
+    saveSignup(mockSignup);
+    const retrievedSignups = JSON.parse(localStorage.getItem("signups"));
+
+    expect(retrievedSignups).toEqual([mockSignup]);
+});
+
+// Test to check if the table is populated correctly from localStorage
+test("Render table populates DOM correctly", () => {
+    const mockSignup = {
+        eventName: "Fund Raises",
+        participantName: "Rushil Patel",
+        participantEmail: "Rushilpatel@gmail.com",
+        role: "Sponsor",
+    };
+
+    localStorage.setItem("signups", JSON.stringify([mockSignup]));
+    renderTable();
+
+    const tableBody = document.getElementById("signups-table").querySelector("tbody");
+    expect(tableBody.children.length).toBe(1);
+    expect(tableBody.children[0].textContent).toContain("Fund Raises");
+});
+
+// Test to check if deleting a signup updates localStorage and the table
+test("Delete signup updates localStorage and table", () => {
+    const mockSignup = {
+        eventName: "Fund Raises",
+        participantName: "Rushil Patel",
+        participantEmail: "Rushilpatel@gmail.com",
+        role: "Sponsor",
+    };
+
+    localStorage.setItem("signups", JSON.stringify([mockSignup]));
+    deleteSignup(0);
+
+    const updatedSignups = JSON.parse(localStorage.getItem("signups"));
+    expect(updatedSignups).toEqual([]);
+});
+
+// Test to render the summary correctly
+test("Render summary displays correct role counts", () => {
+    const signups = [
+        { role: "Sponsor" },
+        { role: "Participant" },
+        { role: "Sponsor" },
+    ];
+    localStorage.setItem("signups", JSON.stringify(signups));
+    renderSummary();
+
+    const summarySection = document.getElementById("summary-section");
+    expect(summarySection.textContent).toContain("Sponsor: 2");
+    expect(summarySection.textContent).toContain("Participant: 1");
+});
+
+// Test for form submission collecting and validating data correctly
 test("Form submission collects and validates data correctly", () => {
     const form = document.getElementById("event-signup-form");
 
@@ -38,6 +112,7 @@ test("Form submission collects and validates data correctly", () => {
     expect(global.alert).not.toHaveBeenCalledWith("Please enter a valid email address.");
 });
 
+// Test for valid input populating the data object
 test("Valid input populates data object", () => {
     const signupData = {
         eventName: document.getElementById("event-name").value.trim(),
@@ -54,6 +129,7 @@ test("Valid input populates data object", () => {
     });
 });
 
+// Test for validation flags for empty fields
 test("Validation flags empty fields", () => {
     // Simulate empty field by clearing the value
     document.getElementById("event-name").value = "";
@@ -74,6 +150,7 @@ test("Validation flags empty fields", () => {
     expect(global.alert).toHaveBeenCalledWith("All fields are required. Please fill out all fields.");
 });
 
+// Test for validation flags for invalid email format
 test("Validation flags invalid email format", () => {
     // Simulate invalid email
     document.getElementById("representative-email").value = "invalid-email";
