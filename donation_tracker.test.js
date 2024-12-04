@@ -75,3 +75,43 @@ test("Validation flags empty or invalid inputs", () => {
     expect(mockEvent.preventDefault).toHaveBeenCalled();
     expect(alert).toHaveBeenCalledWith("Please fill out all required fields correctly.");
 });
+
+test("Save and retrieve donations from localStorage", () => {
+    const mockDonation = {
+        charityName: "Charity A",
+        donationAmount: 100,
+        donationDate: "2024-11-24",
+        donorMessage: "Great work!",
+    };
+
+    localStorage.setItem("donations", JSON.stringify([mockDonation]));
+    const retrievedDonations = JSON.parse(localStorage.getItem("donations"));
+
+    expect(retrievedDonations).toEqual([mockDonation]);
+});
+
+test("Calculate total donation amount", () => {
+    const donations = [
+        { donationAmount: 50 },
+        { donationAmount: 75 },
+        { donationAmount: 25 },
+    ];
+    localStorage.setItem("donations", JSON.stringify(donations));
+    document.body.innerHTML = '<span id="total-donation"></span>';
+    calculateSummary();
+
+    const total = document.getElementById("total-donation").textContent;
+    expect(total).toBe("150.00");
+});
+
+test("Delete donation updates localStorage and table", () => {
+    const donations = [
+        { charityName: "Charity A", donationAmount: 100 },
+        { charityName: "Charity B", donationAmount: 200 },
+    ];
+    localStorage.setItem("donations", JSON.stringify(donations));
+    deleteDonation(0);
+
+    const updatedDonations = JSON.parse(localStorage.getItem("donations"));
+    expect(updatedDonations).toEqual([{ charityName: "Charity B", donationAmount: 200 }]);
+});
