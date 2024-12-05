@@ -16,5 +16,8 @@
   },
   "jest": {
     "testEnvironment": "jest-environment-jsdom"
+  },
+  "dependencies": {
+    "update": "^0.7.4"
   }
 }
