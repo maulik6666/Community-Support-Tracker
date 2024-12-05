@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
  
 // Export functions to be used in tests (CommonJS)
-export default {
+module.exports = {
     saveSignup,
     renderTable,
     deleteSignup,
