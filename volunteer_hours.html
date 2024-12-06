@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Hours Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Community Support Tracker</h1>
+    </header>
+    
+    <nav>
+        <a href="donation_tracker.html">Donation Tracker</a>
+        <a href="volunteer_hours_tracker.html">Volunteer Hours Tracker</a>
+        <a href="event_signup.html">Event Signup</a>
+    </nav>
+    
+    <main>
+        <h2>Volunteer Hours Tracker</h2>
+        <form id="volunteer-form" novalidate>
+            <label for="charity-name">Charity Name:</label>
+            <input type="text" id="charity-name" name="charity-name" required>
+
+            <label for="hours-volunteered">Hours Volunteered:</label>
+            <input type="number" id="hours-volunteered" name="hours-volunteered" min="1" required>
+
+            <label for="volunteer-date">Date of Volunteering:</label>
+            <input type="date" id="volunteer-date" name="volunteer-date" required>
+
+            <label for="experience-rating">Experience Rating (1-5):</label>
+            <input type="number" id="experience-rating" name="experience-rating" min="1" max="5" required>
+
+            <button type="submit">Submit Volunteer Hours</button>
+        </form>
+
+        <h3>Logged Volunteer Hours</h3>
+        <table id="volunteer-table">
+            <thead>
+                <tr>
+                    <th>Charity Name</th>
+                    <th>Hours Volunteered</th>
+                    <th>Date</th>
+                    <th>Experience Rating</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be inserted dynamically here -->
+            </tbody>
+        </table>
+
+        <div id="summary">
+            <p>Total Hours Volunteered: <span id="total-hours">0</span></p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 PiXELL River Financial - Community Support Tracker</p>
+    </footer>
+</body>
+</html>
