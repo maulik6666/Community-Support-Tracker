@@ -66,3 +66,42 @@ button:hover {
         font-size: 14px; /* Smaller button text on small screens */
     }
 }
+
+h2 {
+    text-align: center;
+}
+
+/* Form and Table Container */
+main {
+    max-width: 600px; /* Set maximum width for both form and table */
+    margin: 0 auto; /* Center both form and table on the page */
+    padding: 20px;
+}
+
+/* Table Styles */
+table {
+    width: 100%; /* Matches the width of the form */
+    border-collapse: collapse; /* Ensures borders don't double up */
+    margin-top: 20px; /* Adds spacing between the form and the table */
+    font-size: 16px; /* Adjusts font size for readability */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for aesthetics */
+}
+
+th, td {
+    border: 1px solid #D3D3D3; /* Light gray border around each cell */
+    padding: 10px; /* Adds spacing inside cells */
+    text-align: left; /* Aligns text to the left */
+}
+
+th {
+    background-color: #F0F0F0; /* Light background for table headers */
+    font-weight: bold; /* Makes header text bold */
+}
+
+tr:nth-child(even) {
+    background-color: #F9F9F9; /* Light gray background for alternate rows */
+}
+
+tr:hover {
+    background-color: #F0F8FF; /* Light blue highlight on hover */
+}
