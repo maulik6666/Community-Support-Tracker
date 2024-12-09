@@ -176,3 +176,5 @@ test("Render summary displays correct role counts", () => {
     expect(summarySection.textContent).toContain("Sponsor: 2");
     expect(summarySection.textContent).toContain("Participant: 1");
 });
+
+
